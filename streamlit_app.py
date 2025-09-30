@@ -17,11 +17,13 @@ with st.sidebar:
     st.header("⚙️ Configuration")
     
     # API Key input
-    api_key = st.text_input(
-        "Perplexity API Key",
-        type="password",
-        help="Enter your Perplexity API key. Get one at https://perplexity.ai/account/api"
-    )
+    #api_key = st.text_input(
+    #    "Perplexity API Key",
+    #    type="password",
+    #    help="Enter your Perplexity API key. Get one at https://perplexity.ai/account/api"
+    #)
+
+   api_key = PerplexAPIkey 
     
     # Model selection
     model = st.selectbox(
