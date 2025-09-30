@@ -16,14 +16,23 @@ st.markdown("Chat with Perplexity's Sonar models for up-to-date, web-grounded re
 with st.sidebar:
     st.header("⚙️ Configuration")
     
-    # API Key input
-    #api_key = st.text_input(
-    #    "Perplexity API Key",
-    #    type="password",
-    #    help="Enter your Perplexity API key. Get one at https://perplexity.ai/account/api"
-    #)
-
-   api_key = PerplexAPIkey 
+    # API Key input - try to load from secrets first
+    try:
+        api_key = st.secrets.get("PERPLEXITY_API_KEY", "")
+        if api_key:
+            st.success("✅ API Key loaded from secrets")
+        else:
+            api_key = st.text_input(
+                "Perplexity API Key",
+                type="password",
+                help="Enter your Perplexity API key. Get one at https://perplexity.ai/account/api"
+            )
+    except:
+        api_key = st.text_input(
+            "Perplexity API Key",
+            type="password",
+            help="Enter your Perplexity API key. Get one at https://perplexity.ai/account/api"
+        )
     
     # Model selection
     model = st.selectbox(
